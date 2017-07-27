@@ -1,7 +1,6 @@
 package com.parkinglot.manager;
 
 import com.parkinglot.dao.ParkingSpaceDao;
-import com.parkinglot.dao.ParkingSpaceDaoImpl;
 import com.parkinglot.entity.BookingDO;
 import com.parkinglot.entity.ParkingSpaceDO;
 import com.parkinglot.filter.ParkingSpaceFilter;
@@ -52,8 +51,6 @@ public class ParkingSpaceManagerImpl implements ParkingSpaceManager {
     @Override
     public List<ParkingSpaceDO> getParkingSpaces(ParkingSpaceFilter parkingSpaceFilter) {
         List<BookingDO> bookings = bookingManager.getBookings(parkingSpaceFilter);
-        System.out.println(bookings.get(0).getBookingId());
-
         return bookings.stream()
             .map(this::getParkingSpace)
             .collect(Collectors.toList());
@@ -61,11 +58,10 @@ public class ParkingSpaceManagerImpl implements ParkingSpaceManager {
 
     @Override
     public ParkingSpaceDO getParkingSpaceById(String parkingSpaceId) {
-        ParkingSpaceDao parkingSpaceDao = new ParkingSpaceDaoImpl();
         return parkingSpaceDao.getParkingSpaceById(parkingSpaceId);
     }
 
     private ParkingSpaceDO getParkingSpace(BookingDO booking) {
-        return parkingSpaceDao.getParkingSpaceById(booking.getParkingSpaceId());
+        return getParkingSpaceById(booking.getParkingSpaceId());
     }
 }

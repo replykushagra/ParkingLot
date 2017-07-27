@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.security.InvalidParameterException;
 import java.util.List;
-import java.util.UUID;
 
 public class BookingManagerImpl implements BookingManager {
 
@@ -28,7 +27,9 @@ public class BookingManagerImpl implements BookingManager {
             BookingDO booking = new BookingDO();
             booking.setBookingFrom(filter.getFromDate().toEpochMilli());
             booking.setBookingTill(filter.getToDate().toEpochMilli());
-            booking.setBookingId(UUID.randomUUID().toString());
+            booking.setParkingSpaceId(parkingSpaceId);
+            // Need a better primary key here
+            booking.setBookingId(booking.generateHash());
             bookingDao.save(booking);
             return parkingSpaceId;
         }

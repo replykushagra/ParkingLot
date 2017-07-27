@@ -1,7 +1,7 @@
 {
-  "name": "reactjs-basics",
+  "name": "reactjs",
   "version": "1.0.0",
-  "description": "Some basic ReactJS",
+  "description": "Reactjs setup",
   "main": "index.js",
   "scripts": {
     "start": "npm run build",
@@ -11,8 +11,7 @@
   "keywords": [
     "reactjs"
   ],
-  "author": "Maximilian Schwarzmueller",
-  "license": "MIT",
+  "author": "Kushagra Sharma",
   "dependencies": {
     "react": "^15.5.4",
     "react-dom": "^15.5.4"
