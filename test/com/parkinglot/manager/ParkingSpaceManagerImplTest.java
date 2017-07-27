@@ -72,11 +72,11 @@ public class ParkingSpaceManagerImplTest {
 
     private BookingDO generateDefaultBooking() {
         return BookingDO.builder()
-        .bookingFrom(DEFAULT_FROM_DATE.toEpochMilli())
-        .bookingTill(DEFAULT_TILL_DATE.toEpochMilli())
-        .parkingSpaceId(DEFAULT_PARKING_SPACE_ID)
-        .bookingId(generateBookingId())
-        .build();
+            .bookingFrom(DEFAULT_FROM_DATE.toEpochMilli())
+            .bookingTill(DEFAULT_TILL_DATE.toEpochMilli())
+            .parkingSpaceId(DEFAULT_PARKING_SPACE_ID)
+            .bookingId(generateBookingId())
+            .build();
     }
 
     private ParkingSpaceFilter generateDefaultParkingSpaceFilter() {
@@ -95,7 +95,7 @@ public class ParkingSpaceManagerImplTest {
             ParkingSpaceDO.builder()
                 .parkingSpaceId(DEFAULT_PARKING_SPACE_ID)
                 .build(),
-                ParkingSpaceDO.builder()
+            ParkingSpaceDO.builder()
                 .parkingSpaceId(PARKING_SPACE_ID_1)
                 .build()
         );
