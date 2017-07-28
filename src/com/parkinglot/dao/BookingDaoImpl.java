@@ -1,6 +1,7 @@
 package com.parkinglot.dao;
 
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBScanExpression;
 import com.amazonaws.services.dynamodbv2.model.AttributeValue;
 import com.parkinglot.entity.BookingDO;
 import com.parkinglot.filter.ParkingSpaceFilter;
@@ -8,7 +9,6 @@ import com.parkinglot.filter.ParkingSpaceFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.time.Instant;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -35,8 +35,14 @@ public class BookingDaoImpl implements BookingDao {
     @Override
     public List<BookingDO> getBookings(ParkingSpaceFilter filter) {
         Map<String, AttributeValue> attributeValues = new HashMap<>();
-        // TODO explore dynamoDBMapper to query based on non key attributes
-        return Collections.EMPTY_LIST;
+        attributeValues.put(":bookingTill", createAttributeValueFromInstant(filter.getToDate()));
+        attributeValues.put(":bookingFrom", createAttributeValueFromInstant(filter.getFromDate()));
+
+          DynamoDBScanExpression scanExpression = new DynamoDBScanExpression()
+            .withFilterExpression(
+                "(bookingFrom >= :bookingFrom and bookingTill > :bookingFrom) and (bookingFrom < :bookingTill and bookingTill >= :bookingTill)")
+            .withExpressionAttributeValues(attributeValues);
+        return dynamoDBMapper.scan(BookingDO.class, scanExpression);
     }
 
     private AttributeValue createAttributeValueFromInstant(Instant instant) {
