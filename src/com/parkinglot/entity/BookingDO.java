@@ -18,16 +18,16 @@ import lombok.NoArgsConstructor;
 @DynamoDBTable(tableName="BOOKING")
 public class BookingDO {
 
-    @DynamoDBHashKey(attributeName = "booking_id")
+    @DynamoDBHashKey(attributeName = "bookingId")
     private String bookingId;
 
-    @DynamoDBAttribute(attributeName = "parking_space_id")
+    @DynamoDBAttribute(attributeName = "parkingSpaceId")
     private String parkingSpaceId;
 
-    @DynamoDBAttribute(attributeName = "booking_till")
+    @DynamoDBAttribute(attributeName = "bookingTill")
     private Long bookingTill;
 
-    @DynamoDBAttribute(attributeName = "booking_from")
+    @DynamoDBAttribute(attributeName = "bookingFrom")
     private Long bookingFrom;
 
     public String generateHash() {

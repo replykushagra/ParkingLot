@@ -87,6 +87,7 @@
                 </configuration>
             </plugin>
         </plugins>
+        <testSourceDirectory>test/</testSourceDirectory>
     </build>
 
 </project>

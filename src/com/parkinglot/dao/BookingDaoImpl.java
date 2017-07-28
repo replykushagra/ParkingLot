@@ -15,8 +15,12 @@ import java.util.Map;
 
 public class BookingDaoImpl implements BookingDao {
 
+    private final DynamoDBMapper dynamoDBMapper;
+
     @Autowired
-    DynamoDBMapper dynamoDBMapper;
+    public BookingDaoImpl(DynamoDBMapper dynamoDBMapper) {
+        this.dynamoDBMapper = dynamoDBMapper;
+    }
 
     @Override
     public BookingDO getBookingById(String bookingId) {
