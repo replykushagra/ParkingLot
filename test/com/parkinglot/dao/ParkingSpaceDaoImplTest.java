@@ -16,7 +16,6 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.time.Instant;
 import java.util.List;
 
 public class ParkingSpaceDaoImplTest {
@@ -26,14 +25,6 @@ public class ParkingSpaceDaoImplTest {
     private static final String DEFAULT_PARKING_SPACE_ID = "ParkingSpaceId";
     private static final String PARKING_SPACE_ID_1 = "ParkingSpaceId1";
     private static final String PARKING_SPACE_ID_2 = "ParkingSpaceId2";
-    private static final Long TOTAL_NUMBER__OF_MILLISECONDS_IN_A_DAY = 86400000L;
-    private static final Instant DEFAULT_FROM_DATE = Instant.ofEpochMilli(System.currentTimeMillis());
-    private static final Instant DEFAULT_TILL_DATE = Instant.ofEpochMilli(System.currentTimeMillis()
-        + TOTAL_NUMBER__OF_MILLISECONDS_IN_A_DAY);
-    private static final Instant TWO_DAYS_FROM_NOW = Instant.ofEpochMilli(System.currentTimeMillis()
-        + TOTAL_NUMBER__OF_MILLISECONDS_IN_A_DAY * 3);
-    private static final Instant THREE_DAYS_FROM_NOW = Instant.ofEpochMilli(System.currentTimeMillis()
-        + TOTAL_NUMBER__OF_MILLISECONDS_IN_A_DAY * 3);
 
     private ParkingSpaceDaoImpl parkingSpaceDao;
     private DynamoDBMapper dynamoDBMapper;
