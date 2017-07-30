@@ -10,8 +10,12 @@ import java.util.List;
 
 public class ParkingSpaceDaoImpl implements ParkingSpaceDao {
 
+    private final DynamoDBMapper mapper;
+
     @Autowired
-    DynamoDBMapper mapper;
+    public ParkingSpaceDaoImpl(DynamoDBMapper mapper) {
+        this.mapper = mapper;
+    }
 
     @Override
     public ParkingSpaceDO getParkingSpaceById(String parkingSpaceId) {
